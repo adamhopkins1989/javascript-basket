@@ -3,7 +3,6 @@ var basket = {
     total: 0,
     add: function(item) {
         this.basket.push(item);
-        console.log(basket)
         this.update();
 
     },
@@ -31,7 +30,7 @@ var basket = {
         for (var i = 0; i < this.basket.length; i++) {
 
             if (item === this.basket[i].id) {
-                
+
             } else {
                 newBasket.push(this.basket[i])
             }
@@ -69,3 +68,21 @@ var basket = {
 };
 
 basket.event()
+
+var root = 'http://jsonplaceholder.typicode.com';
+
+
+$.ajax({
+  url: root + '/posts/',
+  method: 'GET'
+}).then(function(data) {
+
+  for (var i = 0; i < data.length; i++) {
+      console.log(data[i].title);
+
+      var adam = '<div style="width: 100%; background: black; color: #fff; text-align:center; padding: 10px; max-width: 960px; margin: auto; "><span>' + data[i].title + '"</div></div>';
+
+      $('#lists').append(adam);
+  }
+});
+
